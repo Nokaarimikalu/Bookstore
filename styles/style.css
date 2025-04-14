@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(190, 100%, 10%) hsl(190, 100%, 20%);
+}
+h1 {
+    font-size: 6rem;
+}
+h2 {
+    font-size: 2.4rem;
+}
+h3 {
+    font-size: 2rem;
+}
+span {
+    font-size: 1.6rem;
+}
+@font-face {
+    font-family: "raleway";
+    src: url(/styles/Raleway-VariableFont_wght.ttf);
+}
+html {
+    font-size: 10px;
+    font-family: "raleway", sans-serif;
+}
+
+nav {
+    gap: 4rem;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(190, 100%, 10%);
+    img {
+        width: auto;
+        height: 8rem;
+    }
+}
+main {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-height: 90vh;
+    gap: 6rem;
+    color: white;
+    padding-top: 4rem;
+    background-color: hsl(190, 100%, 5%);
+    .templateBook {
+        background-color: hsl(190, 100%, 20%);
+        border-radius: 15px;
+        height: 65rem;
+        width: 40rem;
+        .nameOfTheBook {
+            padding: 2rem 0 2rem 0;
+            text-align: center;
+        }
+        .imageOfTheBook {
+            display: flex;
+            justify-content: center;
+            img {
+                border: solid 3px black;
+                border-radius: 15px;
+                height: 20rem;
+                width: 35rem;
+                object-fit: cover;
+            }
+        }
+        .infoOfTheBook {
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 3rem 0 1.5rem 0;
+            .priceAndLikes {
+                h2 {
+                    color: hsl(15, 100%, 50%);
+                }
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 3rem 1rem 3rem;
+                .likes {
+                    display: flex;
+                    align-items: center;
+                    img {
+                        width: 4rem;
+                        height: 4rem;
+                    }
+                }
+            }
+            table {
+                padding: 0 3rem;
+                td {
+                    font-size: 1.6rem;
+                    width: 30%;
+                }
+            }
+        }
+        .commentsOfTheBook {
+            display: flex;
+            flex-direction: column;
+            padding: 0 3rem 2rem 3rem;
+            gap: 1rem;
+            min-height: 140px;
+            max-height: 140px;
+            overflow-y: auto; /*dadurch kann man auf der y achse ein scrollbalken haben*/
+            table {
+                td {
+                    padding: 0.3rem 0rem;
+                    font-size: 1.6rem;
+                    width: 30%;
+                    vertical-align: top; /* align weil es ja kein flex ist */
+                    word-break: break-word; /*damit es in die naechste Zeile bricht  */
+                }
+            }
+        }
+        .inputOfTheBook {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            height: 4rem;
+            width: 100%;
+            padding: 0 2rem;
+            form {
+                width: 100%;
+            }
+            .comments {
+                color: white;
+                background-color: hsl(190, 100%, 25%);
+                border: hidden;
+                font-size: 1.6rem;
+                border-radius: 10px;
+                height: 3rem;
+                width: 100%;
+                padding: 0 1rem;
+            }
+            .comments::placeholder {
+                color: white;
+            }
+            a {
+                display: inline-block;
+                img {
+                    height: 3rem;
+                    width: 3rem;
+                }
+            }
+        }
+        .whiteLine {
+            background-color: white;
+            width: 100%;
+            height: 2px;
+            margin-bottom: 1.5rem;
+        }
+    }
+}
