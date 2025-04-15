@@ -186,42 +186,55 @@ let books = [
 ];
 // #endregion
 
-
 function init() {
     renderBookTemplate();
 }
+// console.log(books[0].comments[0].name);
+// console.log(books[0].comments[0].comment);
 
+function addComments(i){
+    let inputComment = document.getElementById(`input${i + 1}`).value;
+    books[i].comments.push({
+        name: "User",//keine Zeit gehabt nen extra pop up Fenster zu machen wo man sein Namen eingibt 
+        comment: inputComment,
+    });
+    
+    renderBookTemplate()
+}
 
 function renderBookTemplate() {
-    const bookTemp = document.getElementById(`hauptbereich`);  
-    for (let bookAmount = 0; bookAmount < books.length; bookAmount++) {
-        let amount = bookAmount
-        bookTemp.innerHTML += bookTemplate(amount);       
-        renderHeartImage(amount);
-    }  
-}
-
-function renderHeartImage(index){
-    if(books[index].liked === true){
-        document.getElementById(`heart${index}`).innerHTML = "";
-        let Heart = document.getElementById(`heart${index}`)
-        Heart.innerHTML += `<img onclick="changeHeart(${index})" src="/assets/img/black-heart.png">`
-    }else{
-        document.getElementById(`heart${index}`).innerHTML = ""
-        let Heart = document.getElementById(`heart${index}`)
-        Heart.innerHTML += `<img onclick="changeHeart(${index})" src="/assets/img/black-heart -inner-transparent.png">`
+    const bookTemp = document.getElementById(`hauptbereich`);
+    bookTemp.innerHTML = "";
+    for (let i = 0; i < books.length; i++) {
+        bookTemp.innerHTML += bookTemplate(i);
+        renderHeartImage(i);
+    for(let j = 0; j < books[i].comments.length; j++){  
+        let commentTemp = document.getElementById(`commentsTemplate${i}`)     
+        commentTemp.innerHTML += commentTemplate(i,j);
+        }
     }
 }
-function changeHeart(i){
+
+function renderHeartImage(index) {
+    if (books[index].liked === true) {
+        document.getElementById(`heart${index}`).innerHTML = "";
+        let heart = document.getElementById(`heart${index}`);
+        heart.innerHTML += `<img onclick="changeHeart(${index})" src="/assets/img/black-heart.png">`;
+    } else {
+        document.getElementById(`heart${index}`).innerHTML = "";
+        let heart = document.getElementById(`heart${index}`);
+        heart.innerHTML += `<img onclick="changeHeart(${index})" src="/assets/img/black-heart -inner-transparent.png">`;
+    }
+}
+function changeHeart(i) {
     document.getElementById(`likedNumber${i}`).innerHTML = "";
-    if(books[i].liked === true){
+    if (books[i].liked === true) {
         books[i].liked = false;
         books[i].likes--;
-    }else if(books[i].liked === false){
+    } else if (books[i].liked === false) {
         books[i].liked = true;
         books[i].likes++;
     }
     document.getElementById(`likedNumber${i}`).innerHTML = books[i].likes;
     renderHeartImage(i);
 }
-

@@ -27,25 +27,17 @@ function bookTemplate(i) {
                 <div class="whiteLine"></div>
                 <div class="commentsOfTheBook">
                     <span> <b>Kommentare:</b></span>
-                    <table>
-                        <tr>
-                            <td>Kevin</td>
-                            <td>: asadfd</td>
-                        </tr>
-                        <tr>
-                            <td>Kevin</td>
-                            <td>: asadfd</td>
-                        </tr>
-                        <tr>
-                            <td>Kevin</td>
-                            <td>:asadsssssssssssssss</td>
-                    </table>
+                    <div id="commentsTemplate${i}"></div>
                 </div>
                 <div class="inputOfTheBook">
-                    <form><input class="comments" type="text" placeholder="Schreibe dein Kommentar..." /></form>
-                    <a href="#">
-                        <img src="./assets/img/telegram-logo.png" alt="" />
-                    </a>
+                    <div class="inputl"><input id="input${i + 1}" class="comments" type="text" placeholder="Schreibe dein Kommentar..." /></div>
+                        <img onclick="addComments(${i})" src="./assets/img/telegram-logo.png" alt="" />
                 </div>
             </div>`;
+}
+function commentTemplate(i,j){
+    return `<div class="commentsName" id="commentsTemp${i}">
+                <p class="nameOfPerson">${books[i].comments[j].name}:</p>
+                <p class="commenOfPerson">${books[i].comments[j].comment}</p>
+            </div>`
 }
