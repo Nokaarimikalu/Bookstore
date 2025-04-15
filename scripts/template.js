@@ -7,7 +7,7 @@ function bookTemplate(i) {
                 <div class="infoOfTheBook">
                     <div class="priceAndLikes">
                         <div class="price"><h2>${books[i].price}$</h2></div>
-                        <div class="likes"><span id="likedNumber">${books[i].likes}</span> <img onclick="heartClick()" src="./assets/img/black-heart.png" alt="" /></div>
+                        <div class="likes"><span id="likedNumber${[i]}">${books[i].likes}</span><div id="heart${i}"> </div></div>
                     </div>
                     <table class="infoBook">
                         <tr>

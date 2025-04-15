@@ -86,6 +86,7 @@ main {
                     display: flex;
                     align-items: center;
                     img {
+                        cursor: pointer;
                         width: 4rem;
                         height: 4rem;
                     }

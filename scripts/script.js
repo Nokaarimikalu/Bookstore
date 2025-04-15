@@ -185,7 +185,7 @@ let books = [
     },
 ];
 // #endregion
-let globaleVariable = 0 - 1;
+
 
 function init() {
     renderBookTemplate();
@@ -193,16 +193,35 @@ function init() {
 
 
 function renderBookTemplate() {
-    const bookTemp = document.getElementById(`hauptbereich`);
-    let currentIndex = books.findIndex(book => book.name === "Die Geheimnisse des Ozeans")
-
+    const bookTemp = document.getElementById(`hauptbereich`);  
     for (let bookAmount = 0; bookAmount < books.length; bookAmount++) {
-        bookTemp.innerHTML += bookTemplate(currentIndex);//hier koennen mehr funktionen stehen
-        currentIndex++
-    }
-    
-    
-    
+        let amount = bookAmount
+        bookTemp.innerHTML += bookTemplate(amount);       
+        renderHeartImage(amount);
+    }  
 }
 
+function renderHeartImage(index){
+    if(books[index].liked === true){
+        document.getElementById(`heart${index}`).innerHTML = "";
+        let Heart = document.getElementById(`heart${index}`)
+        Heart.innerHTML += `<img onclick="changeHeart(${index})" src="/assets/img/black-heart.png">`
+    }else{
+        document.getElementById(`heart${index}`).innerHTML = ""
+        let Heart = document.getElementById(`heart${index}`)
+        Heart.innerHTML += `<img onclick="changeHeart(${index})" src="/assets/img/black-heart -inner-transparent.png">`
+    }
+}
+function changeHeart(i){
+    document.getElementById(`likedNumber${i}`).innerHTML = "";
+    if(books[i].liked === true){
+        books[i].liked = false;
+        books[i].likes--;
+    }else if(books[i].liked === false){
+        books[i].liked = true;
+        books[i].likes++;
+    }
+    document.getElementById(`likedNumber${i}`).innerHTML = books[i].likes;
+    renderHeartImage(i);
+}
 
