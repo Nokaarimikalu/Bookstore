@@ -1,5 +1,5 @@
 function bookTemplate(i) {
-    return `<div class="templateBook" id="${[i+1]}">
+    return `<div class="templateBook" id="${[i + 1]}">
                 <div class="nameOfTheBook"><h2>${books[i].name}</h2></div>
                 <div class="imageOfTheBook">
                     <img src="${books[i].image}" alt="" />
@@ -30,14 +30,16 @@ function bookTemplate(i) {
                     <div id="commentsTemplate${i}"></div>
                 </div>
                 <div class="inputOfTheBook">
-                    <div class="inputl"><input id="input${i + 1}" class="comments" type="text" placeholder="Schreibe dein Kommentar..." /></div>
-                        <img onclick="addComments(${i})" src="./assets/img/telegram-logo.png" alt="" />
+                    <div class="inputl"><input id="input${
+                        i + 1
+                    }" class="comments" type="text" placeholder="Schreibe dein Kommentar..." /></div>
+                        <img class="sendComment" onclick="addComments(${i})" src="/Bookstore/assets/img/telegram-logo.png" alt="" />
                 </div>
             </div>`;
 }
-function commentTemplate(i,j){
+function commentTemplate(i, j) {
     return `<div class="commentsName" id="commentsTemp${i}">
                 <p class="nameOfPerson">${books[i].comments[j].name}:</p>
                 <p class="commenOfPerson">${books[i].comments[j].comment}</p>
-            </div>`
+            </div>`;
 }

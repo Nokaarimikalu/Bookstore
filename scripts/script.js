@@ -6,10 +6,10 @@ let books = [
         author: "Clara Meer",
         likes: 1250,
         liked: true,
-        price: 19.99,
+        price: `19,99`,
         publishedYear: 2018,
         genre: "Fantasy",
-        image: "/assets/img/81DliYtUJqL._SY342_.jpg",
+        image: "/Bookstore/assets/img/81DliYtUJqL._SY342_.jpg",
         comments: [
             {
                 name: "Leser123",
@@ -38,10 +38,10 @@ let books = [
         author: "Maxmilian Schwarz",
         likes: 980,
         liked: false,
-        price: "14.50",
+        price: "14,50",
         publishedYear: 2021,
         genre: "Fantasy",
-        image: "/assets/img/719sInWrmML._SY522_.jpg",
+        image: "/Bookstore/assets/img/719sInWrmML._SY522_.jpg",
         comments: [],
     },
     {
@@ -49,10 +49,10 @@ let books = [
         author: "Laura Blau",
         likes: 1520,
         liked: true,
-        price: 22.95,
+        price: "22,95",
         publishedYear: 2019,
         genre: "Romantik",
-        image: "/assets/img/41c0eGqunkL._SY445_SX342_.jpg",
+        image: "/Bookstore/assets/img/41c0eGqunkL._SY445_SX342_.jpg",
         comments: [
             {
                 name: "LeserPeter",
@@ -81,10 +81,10 @@ let books = [
         author: "Alexander Weiss",
         likes: 750,
         liked: false,
-        price: 18.0,
+        price: "18,00",
         publishedYear: 2020,
         genre: "Science-Fiction",
-        image: "/assets/img/141rLQJm8g7L._SY445_SX342_.jpg",
+        image: "/Bookstore/assets/img/141rLQJm8g7L._SY445_SX342_.jpg",
         comments: [
             {
                 name: "BuchKenner",
@@ -101,10 +101,10 @@ let books = [
         author: "Sabine Grün",
         likes: 1300,
         liked: true,
-        price: 16.75,
+        price: `16,75`,
         publishedYear: 2017,
         genre: "Fantasy",
-        image: "/assets/img/der letzte.jpg",
+        image: "/Bookstore/assets/img/der letzte.jpg",
         comments: [],
     },
     {
@@ -112,10 +112,10 @@ let books = [
         author: "Philipp Silber",
         likes: 890,
         liked: false,
-        price: 12.3,
+        price: `12,30`,
         publishedYear: 2022,
         genre: "Science-Fiction",
-        image: "/assets/img/images.jpeg",
+        image: "/Bookstore/assets/img/images.jpeg",
         comments: [
             {
                 name: "BücherLiebhaber",
@@ -132,10 +132,10 @@ let books = [
         author: "Oliver Schwarz",
         likes: 1450,
         liked: true,
-        price: 21.0,
+        price: `21,00`,
         publishedYear: 2015,
         genre: "Science-Fiction",
-        image: "/assets/img/Download.jpeg",
+        image: "/Bookstore/assets/img/Download.jpeg",
         comments: [
             {
                 name: "Leser123",
@@ -148,10 +148,10 @@ let books = [
         author: "Elena Gold",
         likes: 920,
         liked: false,
-        price: 17.5,
+        price: `17,55`,
         publishedYear: 2020,
         genre: "Fantasy",
-        image: "/assets/img/Download (1).jpeg",
+        image: "/Bookstore/assets/img/Download (1).jpeg",
         comments: [
             {
                 name: "Bookworm92",
@@ -164,10 +164,10 @@ let books = [
         author: "Emilia Rot",
         likes: 1800,
         liked: true,
-        price: 19.99,
+        price: `19,99`,
         publishedYear: 2016,
         genre: "Romantik",
-        image: "/assets/img/Download (2).jpeg",
+        image: "/Bookstore/assets/img/Download (2).jpeg",
         comments: [
             {
                 name: "Bibliophile23",
@@ -189,28 +189,33 @@ let books = [
 function init() {
     renderBookTemplate();
 }
-// console.log(books[0].comments[0].name);
-// console.log(books[0].comments[0].comment);
 
-function addComments(i){
+function addComments(i) {
     let inputComment = document.getElementById(`input${i + 1}`).value;
+    let inputElement = document.getElementById(`input${i + 1}`);
+    let commentTemp = document.getElementById(`commentsTemplate${i}`);
+    inputElement.value = "";
+    commentTemp.innerHTML = "";
     books[i].comments.push({
-        name: "User",//keine Zeit gehabt nen extra pop up Fenster zu machen wo man sein Namen eingibt 
+        name: "User",
         comment: inputComment,
     });
-    
-    renderBookTemplate()
+    for (let j = 0; j < books[i].comments.length; j++) {
+        commentTemp.innerHTML += commentTemplate(i, j);
+    }
 }
 
 function renderBookTemplate() {
     const bookTemp = document.getElementById(`hauptbereich`);
     bookTemp.innerHTML = "";
+
     for (let i = 0; i < books.length; i++) {
         bookTemp.innerHTML += bookTemplate(i);
         renderHeartImage(i);
-    for(let j = 0; j < books[i].comments.length; j++){  
-        let commentTemp = document.getElementById(`commentsTemplate${i}`)     
-        commentTemp.innerHTML += commentTemplate(i,j);
+
+        for (let j = 0; j < books[i].comments.length; j++) {
+            let commentTemp = document.getElementById(`commentsTemplate${i}`);
+            commentTemp.innerHTML += commentTemplate(i, j);
         }
     }
 }
@@ -219,13 +224,14 @@ function renderHeartImage(index) {
     if (books[index].liked === true) {
         document.getElementById(`heart${index}`).innerHTML = "";
         let heart = document.getElementById(`heart${index}`);
-        heart.innerHTML += `<img onclick="changeHeart(${index})" src="/assets/img/black-heart.png">`;
+        heart.innerHTML += `<img onclick="changeHeart(${index})" src="/Bookstore/assets/img/black-heart.png">`;
     } else {
         document.getElementById(`heart${index}`).innerHTML = "";
         let heart = document.getElementById(`heart${index}`);
-        heart.innerHTML += `<img onclick="changeHeart(${index})" src="/assets/img/black-heart -inner-transparent.png">`;
+        heart.innerHTML += `<img onclick="changeHeart(${index})" src="/Bookstore/assets/img/black-heart -inner-transparent.png">`;
     }
 }
+
 function changeHeart(i) {
     document.getElementById(`likedNumber${i}`).innerHTML = "";
     if (books[i].liked === true) {
@@ -235,6 +241,7 @@ function changeHeart(i) {
         books[i].liked = true;
         books[i].likes++;
     }
+
     document.getElementById(`likedNumber${i}`).innerHTML = books[i].likes;
     renderHeartImage(i);
 }

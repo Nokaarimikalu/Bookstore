@@ -20,15 +20,15 @@ span {
 }
 @font-face {
     font-family: "raleway";
-    src: url(/styles/Raleway-VariableFont_wght.ttf);
+    src: url(/Bookstore/styles/Raleway-VariableFont_wght.ttf);
 }
 html {
     font-size: 10px;
     font-family: "raleway", sans-serif;
-    @media(max-width: 450px){
+    @media (max-width: 450px) {
         font-size: 8px;
     }
-    @media(max-width: 350px){
+    @media (max-width: 350px) {
         font-size: 7px;
     }
 }
@@ -57,7 +57,7 @@ main {
     .templateBook {
         background-color: hsl(190, 100%, 20%);
         border-radius: 15px;
-        height: 65rem;
+        height: 67rem;
         width: 40rem;
         .nameOfTheBook {
             padding: 2rem 0 2rem 0;
@@ -66,6 +66,7 @@ main {
         .imageOfTheBook {
             display: flex;
             justify-content: center;
+
             img {
                 border: solid 3px black;
                 border-radius: 15px;
@@ -79,6 +80,11 @@ main {
             flex-direction: column;
             font-family: Arial, Helvetica, sans-serif;
             padding: 3rem 3rem 1.5rem 3rem;
+            table {
+                td {
+                    font-size: 1.6rem;
+                }
+            }
             .priceAndLikes {
                 display: flex;
                 justify-content: space-between;
@@ -107,14 +113,14 @@ main {
             max-height: 16rem;
             overflow-y: auto; /*dadurch kann man auf der y achse ein scrollbalken haben*/
             font-size: 1.6rem;
-            span{
+            span {
                 font-size: 2rem;
-            };
-            .commentsName{
+            }
+            .commentsName {
                 padding-bottom: 1rem;
             }
 
-            .nameOfPerson{
+            .nameOfPerson {
                 font-weight: bold;
             }
         }
@@ -141,12 +147,15 @@ main {
             .comments::placeholder {
                 color: white;
             }
-            .inputl{
+            .inputl {
                 width: 100%;
             }
             img {
                 height: 3rem;
                 width: 3rem;
+            }
+            .sendComment {
+                cursor: pointer;
             }
         }
         .whiteLine {
